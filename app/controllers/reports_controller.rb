@@ -22,6 +22,18 @@ class ReportsController < ApplicationController
     @memory_used = memory_in_mb
   end
 
+  def search
+    if params[:search]
+      @assembly = Assembly.all
+      @genes = Gene.limit(100)
+      @hits = Hit.limit(100)
+    end
+  end
+
+  def hits_for
+    @gene = Gene.find(params[:gene_id])
+  end
+
   private def memory_in_mb
     `ps -o rss -p #{$$}`.strip.split.last.to_i / 1024
   end
