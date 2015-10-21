@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'reports#all_data'
+  root 'reports#search'
   resources :reports do
     collection do
       get 'hits_for'
